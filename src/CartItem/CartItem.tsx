@@ -28,7 +28,9 @@ export default function CartItem({data}:Product) {
       }
       CartProduct.splice(index, 1)
       setCartProduct([...CartProduct])
-      setOpen(false)
+      if(CartProduct.length === 0){
+        setOpen(false)
+      }
     }
 
 } 

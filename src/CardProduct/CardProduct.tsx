@@ -14,7 +14,7 @@ type Product = {
 }
 
 export default function CardProduct({data}: Product) {
-  const { setCartProduct,CartProduct} = useStore()
+  const { setCartProduct,CartProduct,setOpen} = useStore()
   const handleAdd = () => {
     const existingProduct = CartProduct.find(item => item.id === data.id);
     if (existingProduct) {
@@ -30,7 +30,7 @@ export default function CardProduct({data}: Product) {
   }
 
   return (
-    <div className="CardProduct">
+    <div className="CardProduct" onClick={()=>setOpen(false)}>
       <img 
         src={data.src} 
         alt="Image" 
