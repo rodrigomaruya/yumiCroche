@@ -1,0 +1,38 @@
+.CartItem{
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.CartItem-img{
+  width: 70px;
+}
+
+.CartItem-info{
+  padding: 0 10px 30px 15px;
+}
+
+.CartItem-title{
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba((0,0,0,0.5));
+  margin-bottom: 8px;
+}
+
+.CartItem-price{
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.CartItem-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-5);
+  font-size: 1.6rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
