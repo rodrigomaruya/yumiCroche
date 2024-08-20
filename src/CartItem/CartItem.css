@@ -21,6 +21,10 @@
   margin-bottom: 8px;
 }
 
+.CartItem-quantity{
+  font-size: 0.85rem;
+  padding-bottom: 5px;
+}
 .CartItem-price{
   font-size: 25px;
   font-weight: 500;

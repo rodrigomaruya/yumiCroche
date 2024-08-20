@@ -6,6 +6,7 @@ type Product = {
   src: string
   title: string
   price: number
+  quantity: number
 }
  type Products ={
    Products:Product[]

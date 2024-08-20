@@ -8,6 +8,7 @@ type Product = {
     src:string
     title: string
     price: number
+    quantity: number
     
   }
 }
@@ -15,8 +16,15 @@ type Product = {
 export default function CardProduct({data}: Product) {
   const { setCartProduct,CartProduct} = useStore()
   const handleAdd = () => {
-    
-    setCartProduct([...CartProduct,data])
+    const existingProduct = CartProduct.find(item => item.id === data.id);
+    if (existingProduct) {
+      existingProduct.quantity++;
+      setCartProduct([...CartProduct]);
+      return;
+    }else{
+
+      setCartProduct([...CartProduct,data])
+    }
    
     
   }

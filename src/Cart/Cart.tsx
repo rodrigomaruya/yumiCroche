@@ -5,7 +5,11 @@ import { formatCurrency } from '../formatCurrency'
 
 export default function Cart() {
   const { open,CartProduct } = useStore()
-  const itemPrice=CartProduct.reduce((acc, item) => acc + item.price, 0)
+  function total (){
+    const itemPrice=CartProduct.reduce((acc, item) => acc + item.price * item.quantity, 0) 
+    return formatCurrency(itemPrice, 'Brl')
+  }
+  
   return (
     <div className={`Cart ${open ? 'Cart-active' : ''}`}>
       <div className='Cart-container'>
@@ -15,7 +19,7 @@ export default function Cart() {
         
       </div>
       <div className='Cart-total'>
-        <h2>{ formatCurrency(itemPrice, 'Brl')}</h2>
+        <h2>{total()}</h2>
         <button className='Cart-button'>Finalizar Compra</button>
       </div>
     </div>

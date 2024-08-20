@@ -8,14 +8,25 @@ interface Product {
     src: string
     title: string
     price: number
+    quantity: number
   }
 }
 
 export default function CartItem({data}:Product) {
   const {setCartProduct,CartProduct}=useStore()
-  const handleRemove = (id: number) => {
-    setCartProduct(CartProduct.filter(item => item.id !== id))
-  }
+  const handleRemove = (title:string) => {
+    const index:number= CartProduct.findIndex(item => item.title === title)
+    if( index !== -1 ){
+      const item = CartProduct[index]
+      if(item.quantity > 1){
+        item.quantity -= 1
+        setCartProduct([...CartProduct])
+        return
+      }
+      CartProduct.splice(index, 1)
+      setCartProduct([...CartProduct])
+    }
+} 
 
   return (
     <div className="CartItem">
@@ -26,8 +37,9 @@ export default function CartItem({data}:Product) {
       />
       <div className="CartItem-info">
         <h3 className="CartItem-title">{data.title}</h3>
+        <p className="CartItem-quantity">Quantity: {data.quantity}</p>
         <p className="CartItem-price">{formatCurrency(data.price, 'Brl')}</p>
-        <button className='CartItem-button'onClick={()=>handleRemove(data.id)}>
+        <button className='CartItem-button'onClick={()=>handleRemove(data.title)}>
           <IoTrashBinSharp />
 
         </button>
