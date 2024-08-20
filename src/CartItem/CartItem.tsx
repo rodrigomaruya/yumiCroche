@@ -13,7 +13,10 @@ interface Product {
 }
 
 export default function CartItem({data}:Product) {
-  const {setCartProduct,CartProduct}=useStore()
+
+  
+  const {setCartProduct,CartProduct,setOpen}=useStore()
+
   const handleRemove = (title:string) => {
     const index:number= CartProduct.findIndex(item => item.title === title)
     if( index !== -1 ){
@@ -25,7 +28,9 @@ export default function CartItem({data}:Product) {
       }
       CartProduct.splice(index, 1)
       setCartProduct([...CartProduct])
+      setOpen(false)
     }
+
 } 
 
   return (
